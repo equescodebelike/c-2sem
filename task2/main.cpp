@@ -17,14 +17,14 @@ int main() {
 
     setlocale(LC_ALL, "Russian");
 
-    cout << "Ââåäèòå çíà÷åíèå n: \n";
+    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ n: \n";
     int n;
     cin >> n;
     double result = 0;
     for (int i = 1; i <= n; ++i) {
         result += i / factorial(i + 1);
     }
-    printf("Îòâåò: %.40lf", result);
+    printf("ÐžÑ‚Ð²ÐµÑ‚: %.40lf", result);
 
     cin.ignore();
     return 0;
