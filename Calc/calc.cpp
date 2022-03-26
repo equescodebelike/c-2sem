@@ -6,40 +6,40 @@ int main() {
 
     setlocale(LC_ALL, "Russian");
 
-    cout << "Введите первое число: \n";
+    cout << "Р’РІРµРґРёС‚Рµ a: \n";
     int a;
     cin >> a;
-    cout << "Введите второе число: \n";
+    cout << "Р’РІРµРґРёС‚Рµ b: \n";
     int b;
     cin >> b;
-    cout << "Выберите одну из предложенных операций (введите знак): + сложение, - вычитание, * умножение, / деление \n";
+    cout << "Р’С‹Р±РµСЂРёС‚Рµ РѕРїРµСЂР°С†РёСЋ: + - * / \n";
 
     char operation;
     cin >> operation;
 
     switch (operation) {
         case '+': {
-            cout << "Ответ: " << a + b << '\n';
+            cout << "РћС‚РІРµС‚: " << a + b << '\n';
             break;
         }
         case '-': {
-            cout << "Ответ: " << a - b << '\n';
+            cout << "РћС‚РІРµС‚: " << a - b << '\n';
             break;
         }
         case '*': {
-            cout << "Ответ: " << a * b << '\n';
+            cout << "РћС‚РІРµС‚: " << a * b << '\n';
             break;
         }
         case '/': {
             if (b == 0) {
-                cout << "Ошибка: деление на ноль \n";
+                cout << "Error \n";
             } else {
-                cout << "Ответ: " << a / b << '\n';
+                cout << "РћС‚РІРµС‚: " << a / b << '\n';
                 break;
             }
         }
         default:
-            cout << "Ошибка: некорректная операция \n";
+            cout << "Error \n";
     }
 
     cin.ignore();
