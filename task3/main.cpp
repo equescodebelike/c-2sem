@@ -19,6 +19,7 @@ int main() {
         }
     } */
 
+    // char *p = arr; первый элемент в массиве
     for (int i = 2; i < len; i += 3) {
         cout << *(arr + i);
     }
