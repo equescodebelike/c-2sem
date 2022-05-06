@@ -2,48 +2,104 @@
 
 using namespace std;
 
-struct Student {
+struct Human {
+    char Case;
     char Surname[10];
-    int Course;
-    int Group;
+    union {
+        struct {
+            int Age;
+        } male;
+        struct {
+            int Age;
+        } female;
+    };
 };
 
-Student createStudent() {
-    Student st;
+Human createStudent() {
+    Human st;
+    cout << "Input M or F" << '\n';
+    cin >> st.Case;
     cout << "Surname: \n";
     cin >> st.Surname;
-    cout << "Course: \n";
-    cin >> st.Course;
-    cout << "Group: \n";
-    cin >> st.Group;
+    switch (st.Case) {
+        case 'M':
+            cout << "Age: \n";
+            cin >> st.male.Age;
+            break;
+        case 'F':
+            cout << "Age: \n";
+            cin >> st.female.Age;
+            break;
+        default:
+            cout << "Error: \n";
+    }
     return st;
 }
 
-void output(Student st) {
-    cout << st.Surname << " | " << st.Course << " | " << st.Group << '\n';
+void output(Human st) {
+    cout << st.Surname;
+    switch (st.Case) {
+        case 'M':
+            cout << " | " << st.male.Age << " years" << " | " << "Male" << '\n';
+            break;
+        case 'F':
+            cout << " | " << st.female.Age << " years" << " | " << "Female" << '\n';
+            break;
+    }
 }
 
-Student &addCourse(Student &st, int course) {
-    st.Course += course;
-    return st;
+Human *deleteSt(Human *stArr, int index, int n) {
+    index--;
+    for (int i = index + 1; i < n; i++) {
+        stArr[i - 1] = stArr[i];
+    }
+    return stArr;
 }
 
 int main() {
-    Student
-            st1 = {"Ivanov", 1, 3},
-            st2 = {"Petrov", 2, 5},
-            st3 = {"Vodkin", 5, 1},
-            customSt;
+    int n = 10;
+    Human humanData[10],
+            std = {0, ""};
 
-    output(st1);
-    output(st2);
-    output(st3);
+    int i;
+    for (i = 0; i < sizeof(humanData) / sizeof(Human); i++) {
+        humanData[i] = std;
+    }
 
-    output(addCourse(st1, 1));
+    while (1) {
+        cout << '\n';
+        cout << "1 - input" << '\n' << "2 - output" << '\n' << "3 - delete" << '\n'
+             << "4 - end" << '\n';
+        cin >> i;
+        switch (i) {
+            case 1:
+                cout << "Position:" << '\n';
+                cin >> i;
+                humanData[i] = createStudent();
+                break;
 
-    customSt = createStudent();
-    output(customSt);
+            case 2:
+                cout << "Position:" << '\n';
+                cin >> i;
+                output(humanData[i]);
+                break;
 
-    cin.ignore();
-    return 0;
+            case 3:
+                cout << "Position:" << '\n';
+                cin >> i;
+                deleteSt(humanData, i, n);
+                n--;
+                break;
+
+            case 4:
+                cin.ignore();
+                return 0;
+
+            default:
+                cout << "Error" << '\n';
+                break;
+        }
+
+    }
+
 }
