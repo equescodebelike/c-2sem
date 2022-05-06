@@ -15,7 +15,7 @@ struct Human {
     };
 };
 
-Human createStudent() {
+Human createHuman() {
     Human st;
     cout << "Input M or F" << '\n';
     cin >> st.Case;
@@ -75,7 +75,7 @@ int main() {
             case 1:
                 cout << "Position:" << '\n';
                 cin >> i;
-                humanData[i] = createStudent();
+                humanData[i] = createHuman();
                 break;
 
             case 2:
