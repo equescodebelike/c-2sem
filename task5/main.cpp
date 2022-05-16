@@ -48,17 +48,26 @@ void output(Human st) {
     }
 }
 
-Human *deleteSt(Human *stArr, int index, int n) {
+/* Human *deleteSt(Human *stArr, int index, int n) {
     index--;
     for (int i = index + 1; i < n; i++) {
         stArr[i - 1] = stArr[i];
     }
     return stArr;
+} */
+
+void remove_nth(Human *stArr, int &n, int pos) {
+    if (n <= pos)
+        return;
+    for (int i = pos; i < n - 1; ++i) {
+        stArr[i] = stArr[i + 1];
+    }
+    --n;
 }
 
 int main() {
     int n = 10;
-    Human humanData[10],
+    Human humanData[n],
             std = {0, ""};
 
     int i;
@@ -75,20 +84,33 @@ int main() {
             case 1:
                 cout << "Position:" << '\n';
                 cin >> i;
+                if (i > n - 1) {
+                    cout << "Error: out of bounds" << '\n';
+                    break;
+                }
                 humanData[i] = createHuman();
                 break;
 
             case 2:
                 cout << "Position:" << '\n';
                 cin >> i;
+                if (i > n - 1) {
+                    cout << "Error: out of bounds" << '\n';
+                    break;
+                }
                 output(humanData[i]);
                 break;
 
             case 3:
                 cout << "Position:" << '\n';
                 cin >> i;
-                deleteSt(humanData, i, n);
-                n--;
+                if (i > n - 1) {
+                    cout << "Error: out of bounds" << '\n';
+                    break;
+                }
+                remove_nth(humanData, n, i);
+                // deleteSt(humanData, i, n);
+                // n--;
                 break;
 
             case 4:
