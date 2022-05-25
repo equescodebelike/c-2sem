@@ -4,6 +4,7 @@ using namespace std;
 
 struct Data {
     int a;
+    int b;
 };
 
 struct List {
